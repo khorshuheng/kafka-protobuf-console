@@ -13,33 +13,18 @@ var produceCmd = &cobra.Command{
 }
 
 func init() {
-	produceCmd.Flags().StringP("descriptor", "d", "", "File descriptor path")
-	produceCmd.Flags().StringP("name", "n", "", "Fully qualified Proto message name")
-	produceCmd.Flags().StringP("topic", "t", "", "Destination Kafka topic")
 	produceCmd.MarkFlagRequired("name")
 	produceCmd.MarkPersistentFlagRequired("brokers")
+	produceCmd.MarkPersistentFlagRequired("topic")
 }
 
 func produce(cmd *cobra.Command, args []string) {
-	brokers, err := cmd.Flags().GetStringSlice("brokers")
+	commonCfg, err := ParseCommonConfig(cmd)
 	if err != nil {
 		panic(err)
 	}
-
-	fileDescriptorPath, err := cmd.Flags().GetString("descriptor")
-	if err != nil {
-		panic(err)
-	}
-
-	protoMessageName, err := cmd.Flags().GetString("name")
-	if err != nil {
-		panic(err)
-	}
-
-	console, err := producer.NewConsole(configs.ProducerConfig{
-		Brokers:            brokers,
-		FileDescriptorPath: fileDescriptorPath,
-		ProtoName:          protoMessageName,
+	console, err := producer.NewConsole(configs.Producer{
+		Common: commonCfg,
 	})
 	if err != nil {
 		panic(err)

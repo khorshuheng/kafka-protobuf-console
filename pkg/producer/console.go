@@ -8,6 +8,7 @@ import (
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/dynamic"
 	"github.com/khorshuheng/kafka-protobuf-console/configs"
+	"github.com/khorshuheng/kafka-protobuf-console/pkg/reflection"
 	"os"
 )
 
@@ -21,12 +22,12 @@ type Console struct {
 	topic		  string
 }
 
-func NewConsole(cfg configs.ProducerConfig) (*Console, error) {
+func NewConsole(cfg configs.Producer) (*Console, error) {
 	kp, err := NewSaramaProducer(cfg.Brokers)
 	if err != nil {
 		return nil, err
 	}
-	md, err := LoadMessageDescriptor(cfg.FileDescriptorPath, cfg.ProtoName)
+	md, err := reflection.LoadMessageDescriptor(cfg.FileDescriptorPath, cfg.ProtoName)
 	if err != nil {
 		return nil, err
 	}

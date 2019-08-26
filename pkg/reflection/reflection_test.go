@@ -1,4 +1,4 @@
-package producer
+package reflection
 
 import (
 	"github.com/stretchr/testify/assert"

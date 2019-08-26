@@ -10,9 +10,9 @@ type SaramaProducer struct {
 }
 
 func NewSaramaProducer(brokers []string) (SaramaProducer, error) {
-	config := sarama.NewConfig()
-	config.Producer.Return.Successes = true
-	client, err := sarama.NewSyncProducer(brokers, config)
+	cfg := sarama.NewConfig()
+	cfg.Producer.Return.Successes = true
+	client, err := sarama.NewSyncProducer(brokers, cfg)
 
 	return SaramaProducer{client}, err
 }
