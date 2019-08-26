@@ -13,7 +13,6 @@ func init() {
 	cobra.OnInitialize()
 	rootCmd.PersistentFlags().StringSliceP("brokers", "b", []string{},
 	"Comma separated Kafka brokers address")
-	rootCmd.MarkPersistentFlagRequired("brokers")
 	rootCmd.AddCommand(produceCmd)
 }
 
