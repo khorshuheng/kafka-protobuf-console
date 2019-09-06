@@ -5,7 +5,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/jhump/protoreflect/desc"
 	"github.com/jhump/protoreflect/dynamic"
-	"github.com/khorshuheng/kafka-protobuf-console/pkg/configs"
+	"github.com/khorshuheng/kafka-protobuf-console/pkg/config"
 	"github.com/khorshuheng/kafka-protobuf-console/pkg/reflection"
 )
 
