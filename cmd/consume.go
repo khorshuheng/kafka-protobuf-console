@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/khorshuheng/kafka-protobuf-console/configs"
+	"github.com/khorshuheng/kafka-protobuf-console/pkg/configs"
 	"github.com/khorshuheng/kafka-protobuf-console/pkg/consumer"
 	"github.com/spf13/cobra"
 )
