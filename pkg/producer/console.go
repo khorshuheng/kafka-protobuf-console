@@ -42,7 +42,10 @@ func (c *Console) Start() error {
 	scanner := bufio.NewScanner(os.Stdin)
 	promptInput()
 	for scanner.Scan() {
-		c.processInput(scanner.Text())
+		err := c.processInput(scanner.Text())
+		if err != nil {
+			return err
+		}
 		promptInput()
 	}
 
