@@ -26,7 +26,7 @@ func consume(cmd *cobra.Command, args []string) {
 	}
 
 	fromBeginning, err := cmd.Flags().GetBool("from-beginning")
-	consumerCfg := configs.Consumer{
+	consumerCfg := config.Consumer{
 		Common:        commonCfg,
 		FromBeginning: fromBeginning,
 	}

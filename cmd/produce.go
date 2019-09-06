@@ -23,7 +23,7 @@ func produce(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-	console, err := producer.NewConsole(configs.Producer{
+	console, err := producer.NewConsole(config.Producer{
 		Common: commonCfg,
 	})
 	if err != nil {

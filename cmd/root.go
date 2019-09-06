@@ -27,28 +27,28 @@ func Execute() {
 	}
 }
 
-func ParseCommonConfig(cmd *cobra.Command) (configs.Common, error) {
+func ParseCommonConfig(cmd *cobra.Command) (config.Common, error) {
 	brokers, err := cmd.Flags().GetStringSlice("brokers")
 	if err != nil {
-		return configs.Common{}, err
+		return config.Common{}, err
 	}
 
 	fileDescriptorPath, err := cmd.Flags().GetString("descriptor")
 	if err != nil {
-		return configs.Common{}, err
+		return config.Common{}, err
 	}
 
 	protoMessageName, err := cmd.Flags().GetString("name")
 	if err != nil {
-		return configs.Common{}, err
+		return config.Common{}, err
 	}
 
 	topic, err := cmd.Flags().GetString("topic")
 	if err != nil {
-		return configs.Common{}, err
+		return config.Common{}, err
 	}
 
-	return configs.Common{
+	return config.Common{
 		Brokers:            brokers,
 		FileDescriptorPath: fileDescriptorPath,
 		ProtoName:          protoMessageName,

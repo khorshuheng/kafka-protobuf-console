@@ -34,7 +34,7 @@ func (pd *ProtoDeserializer) Deserialize(value []byte) (string, error) {
 	}
 }
 
-func NewConsole(cfg configs.Consumer) (*Console, error) {
+func NewConsole(cfg config.Consumer) (*Console, error) {
 	md, err := reflection.LoadMessageDescriptor(cfg.FileDescriptorPath, cfg.ProtoName)
 	if err != nil {
 		return nil, err

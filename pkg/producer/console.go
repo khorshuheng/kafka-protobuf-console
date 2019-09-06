@@ -22,7 +22,7 @@ type Console struct {
 	topic		  string
 }
 
-func NewConsole(cfg configs.Producer) (*Console, error) {
+func NewConsole(cfg config.Producer) (*Console, error) {
 	kp, err := NewSaramaProducer(cfg.Brokers)
 	if err != nil {
 		return nil, err
