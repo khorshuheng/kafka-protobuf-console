@@ -52,5 +52,8 @@ func consume(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-	console.Start()
+	err = console.Start()
+	if err != nil {
+		panic(err)
+	}
 }

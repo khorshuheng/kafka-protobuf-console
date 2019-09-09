@@ -51,6 +51,10 @@ func NewConsole(cfg config.Consumer) (*Console, error) {
 	}, nil
 }
 
-func (c *Console) Start() {
-	c.kafkaConsumer.Poll(c.topic)
+func (c *Console) Start() error {
+	err := c.kafkaConsumer.Poll(c.topic)
+	if err != nil {
+		return err
+	}
+	return nil
 }
