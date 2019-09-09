@@ -1,7 +1,7 @@
 # Kafka Protobuf Console
 Kafka Protobuf Console is a CLI which provides the following functionalities:
 * Produce protobuf message to Kafka using Json input
-* Consume protobuf message from Kafka and displayed the message in Json format (WIP)
+* Consume protobuf message from Kafka and displayed the message in Json format
 * Produce protobuf messages continuously to Kafka with random field values (WIP)
 
 ## Installation
@@ -14,7 +14,7 @@ Kafka Protobuf Console is a CLI which provides the following functionalities:
 WIP
 
 ## Quick Start
-WIP
+Example scripts can be found within the ```examples``` directory. For convenience, a docker compose file has also been included so that the user can try using the console with minimal set up.
 
 ## Kafka Protobuf Console Producer
 ### Usage
@@ -31,3 +31,6 @@ Flags:
 Global Flags:
   -b, --brokers strings   Comma separated Kafka brokers address
 ```
+
+## Kafka Protobuf Console Consumer
+### Usage
