@@ -11,4 +11,6 @@ PROTO_NAME=tutorial.Person
 BROKER=kafka:9092
 TOPIC=person
 
-kafka-protobuf-console produce --brokers $BROKER --descriptor $FILE_DESCRIPTOR_SET_FILE --name $PROTO_NAME -t $TOPIC
+# Input examples:
+# {"name": "John", "id": 1, "email": "john.doe@gmail.com", "phones": [{"number": "1234", "type": "WORK"}], "last_updated": "2019-09-30T10:43:17Z"}
+kafka-protobuf-console produce --brokers $BROKER --descriptor $FILE_DESCRIPTOR_SET_FILE --name $PROTO_NAME --topic $TOPIC

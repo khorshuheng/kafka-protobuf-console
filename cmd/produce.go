@@ -13,9 +13,14 @@ var produceCmd = &cobra.Command{
 }
 
 func init() {
+	produceCmd.Flags().StringSliceP("brokers", "b", []string{},
+		"Comma separated Kafka brokers address")
+	produceCmd.Flags().StringP("descriptor", "d", "", "File descriptor path")
+	produceCmd.Flags().StringP("name", "n", "", "Fully qualified Proto message name")
+	produceCmd.Flags().StringP("topic", "t", "", "Destination Kafka topic")
 	produceCmd.MarkFlagRequired("name")
-	produceCmd.MarkPersistentFlagRequired("brokers")
-	produceCmd.MarkPersistentFlagRequired("topic")
+	produceCmd.MarkFlagRequired("brokers")
+	produceCmd.MarkFlagRequired("topic")
 }
 
 func produce(cmd *cobra.Command, args []string) {

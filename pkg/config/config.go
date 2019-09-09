@@ -14,4 +14,5 @@ type Producer struct {
 type Consumer struct {
 	Common
 	FromBeginning	bool
+	Version			string
 }

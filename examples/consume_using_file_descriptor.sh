@@ -11,4 +11,4 @@ PROTO_NAME=tutorial.Person
 BROKER=kafka:9092
 TOPIC=person
 
-kafka-protobuf-console consume --brokers $BROKER --descriptor $FILE_DESCRIPTOR_SET_FILE --name $PROTO_NAME -t $TOPIC -f
+kafka-protobuf-console consume --brokers $BROKER --descriptor $FILE_DESCRIPTOR_SET_FILE --name $PROTO_NAME --topic $TOPIC --from-beginning true --version 2.0.0

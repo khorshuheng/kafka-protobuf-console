@@ -23,14 +23,26 @@ Usage:
   kafka-protobuf-console produce [flags]
 
 Flags:
+  -b, --brokers strings     Comma separated Kafka brokers address
   -d, --descriptor string   File descriptor path
   -h, --help                help for produce
   -n, --name string         Fully qualified Proto message name
   -t, --topic string        Destination Kafka topic
-
-Global Flags:
-  -b, --brokers strings   Comma separated Kafka brokers address
 ```
 
 ## Kafka Protobuf Console Consumer
 ### Usage
+```go
+Consume Protobuf message from Kafka
+
+Usage:
+  kafka-protobuf-console consume [flags]
+
+Flags:
+  -b, --brokers strings     Comma separated Kafka brokers address
+  -d, --descriptor string   File descriptor path
+  -f, --from-beginning      Consume from beginning
+  -n, --name string         Fully qualified Proto message name
+  -t, --topic string        Destination Kafka topic
+  -v, --version string      Kafka version (eg. 2.0.0)
+```

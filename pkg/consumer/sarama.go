@@ -78,9 +78,13 @@ func (c *SaramaConsumer) Poll(topic string) error {
 	return nil
 }
 
-func NewSaramaConsumer(brokers []string, fromBeginning bool, deserializer deserializer) (*SaramaConsumer, error) {
+func NewSaramaConsumer(brokers []string, fromBeginning bool, deserializer deserializer, kafkaVersion string) (*SaramaConsumer, error) {
 	cfg := sarama.NewConfig()
-	//cfg.Version =
+	parsedKafkaVersion, err := sarama.ParseKafkaVersion(kafkaVersion)
+	if err != nil {
+		return nil, err
+	}
+	cfg.Version = parsedKafkaVersion
 
 	if fromBeginning {
 		cfg.Consumer.Offsets.Initial = sarama.OffsetOldest

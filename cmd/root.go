@@ -12,11 +12,6 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	cobra.OnInitialize()
-	rootCmd.PersistentFlags().StringSliceP("brokers", "b", []string{},
-	"Comma separated Kafka brokers address")
-	rootCmd.PersistentFlags().StringP("descriptor", "d", "", "File descriptor path")
-	rootCmd.PersistentFlags().StringP("name", "n", "", "Fully qualified Proto message name")
-	rootCmd.PersistentFlags().StringP("topic", "t", "", "Destination Kafka topic")
 	rootCmd.AddCommand(produceCmd)
 	rootCmd.AddCommand(consumeCmd)
 }

@@ -40,7 +40,7 @@ func NewConsole(cfg config.Consumer) (*Console, error) {
 		return nil, err
 	}
 
-	kc, err := NewSaramaConsumer(cfg.Brokers, cfg.FromBeginning, &ProtoDeserializer{md})
+	kc, err := NewSaramaConsumer(cfg.Brokers, cfg.FromBeginning, &ProtoDeserializer{md}, cfg.Version)
 	if err != nil {
 		return nil, err
 	}
