@@ -20,6 +20,7 @@ func init() {
 	consumeCmd.Flags().StringP("name", "n", "", "Fully qualified Proto message name")
 	consumeCmd.Flags().StringP("topic", "t", "", "Destination Kafka topic")
 	consumeCmd.Flags().StringP("version", "v", "", "Kafka version (eg. 2.0.0)")
+	consumeCmd.Flags().BoolP("pretty", "p", true, "Pretty print json output")
 	consumeCmd.MarkFlagRequired("name")
 	consumeCmd.MarkFlagRequired("brokers")
 	consumeCmd.MarkFlagRequired("topic")
@@ -42,10 +43,16 @@ func consume(cmd *cobra.Command, args []string) {
 		panic(err)
 	}
 
+	prettyPrint, err := cmd.Flags().GetBool("pretty")
+	if err != nil {
+		panic(err)
+	}
+
 	consumerCfg := config.Consumer{
 		Common:        commonCfg,
 		FromBeginning: fromBeginning,
 		Version:	   kafkaVersion,
+		PrettyPrint:   prettyPrint,
 	}
 
 	console, err := consumer.NewConsole(consumerCfg)

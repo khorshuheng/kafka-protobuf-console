@@ -15,4 +15,5 @@ type Consumer struct {
 	Common
 	FromBeginning	bool
 	Version			string
+	PrettyPrint		bool
 }

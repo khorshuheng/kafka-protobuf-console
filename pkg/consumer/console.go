@@ -21,12 +21,20 @@ type Console struct {
 
 type ProtoDeserializer struct {
 	msgDescriptor *desc.MessageDescriptor
+	prettyPrint bool
 }
 
 func (pd *ProtoDeserializer) Deserialize(value []byte) (string, error) {
 	dymsg := dynamic.NewMessage(pd.msgDescriptor)
-	proto.Unmarshal(value, dymsg)
-	marshaller := jsonpb.Marshaler{}
+	err := proto.Unmarshal(value, dymsg)
+	if err != nil {
+		return "", err
+	}
+	indent := ""
+	if pd.prettyPrint {
+		indent = "  "
+	}
+	marshaller := jsonpb.Marshaler{Indent: indent}
 	if jsonStr, err := marshaller.MarshalToString(dymsg); err != nil {
 		return "", err
 	} else {
@@ -40,7 +48,8 @@ func NewConsole(cfg config.Consumer) (*Console, error) {
 		return nil, err
 	}
 
-	kc, err := NewSaramaConsumer(cfg.Brokers, cfg.FromBeginning, &ProtoDeserializer{md}, cfg.Version)
+	protoDeserializer := &ProtoDeserializer{md, cfg.PrettyPrint}
+	kc, err := NewSaramaConsumer(cfg.Brokers, cfg.FromBeginning, protoDeserializer, cfg.Version)
 	if err != nil {
 		return nil, err
 	}

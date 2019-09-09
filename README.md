@@ -43,6 +43,7 @@ Flags:
   -d, --descriptor string   File descriptor path
   -f, --from-beginning      Consume from beginning
   -n, --name string         Fully qualified Proto message name
+  -p, --pretty              Pretty print json output (default true)
   -t, --topic string        Destination Kafka topic
   -v, --version string      Kafka version (eg. 2.0.0)
 ```
